@@ -1,0 +1,37 @@
+﻿@page "/ledenoverview"
+
+<h1 class=" page-title">Alle leden</h1>
+
+@if (Leden == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Voornaam</th>
+                <th>Familienaam</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var leden in Leden)
+            {
+            <tr>
+                <td>@leden.LedenId</td>
+                <td>@leden.Voornaam</td>
+                <td>@leden.Familienaam</td>
+                <td>@leden.Geboortedatum.ToShortDateString()</td>
+                <td>
+                    <a href="@($"ledendetail/{leden.LedenId}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

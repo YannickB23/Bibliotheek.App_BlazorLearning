@@ -1,0 +1,34 @@
+﻿@page "/bezoekeroverview"
+
+<h1 class=" page-title">Alle bezoekers</h1>
+
+@if (Bezoekers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Voornaam</th>
+                <th>Familienaam</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bezoeker in Bezoekers)
+            {
+            <tr>                
+                <td>@bezoeker.Voornaam</td>
+                <td>@bezoeker.Familienaam</td>
+                <td>
+                    <a href="@($"bezoekerdetail/{bezoeker.Voornaam}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
